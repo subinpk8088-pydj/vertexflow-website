@@ -495,3 +495,179 @@ body{
     font-size:1.4rem;
   }
 }
+/* ==========================================
+   PROJECT CARD CLICKABLE
+========================================== */
+
+.project-card{
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.project-card:active{
+  transform:scale(.97);
+}
+
+/* ==========================================
+   IMAGE PREVIEW MODAL
+========================================== */
+
+.image-modal{
+  position:fixed;
+  inset:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:rgba(0,0,0,.95);
+  backdrop-filter:blur(8px);
+
+  z-index:99999;
+
+  animation:fadeIn .25s ease;
+}
+
+.modal-image{
+  max-width:95%;
+  max-height:90vh;
+
+  object-fit:contain;
+
+  border-radius:18px;
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.5);
+
+  animation:zoomIn .25s ease;
+}
+
+.close-modal{
+  position:absolute;
+  top:20px;
+  right:20px;
+
+  width:50px;
+  height:50px;
+
+  border:none;
+  border-radius:50%;
+
+  background:white;
+  color:#111827;
+
+  font-size:2rem;
+  line-height:1;
+
+  cursor:pointer;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition:.3s;
+}
+
+.close-modal:hover{
+  transform:rotate(90deg);
+}
+
+/* ==========================================
+   OPTIONAL PREVIEW LABEL
+========================================== */
+
+.project-card::after{
+  content:"Tap to Preview";
+
+  position:absolute;
+  top:10px;
+  right:10px;
+
+  padding:4px 8px;
+
+  border-radius:30px;
+
+  background:rgba(0,0,0,.65);
+  color:white;
+
+  font-size:.65rem;
+  font-weight:500;
+
+  z-index:2;
+}
+
+@media(min-width:769px){
+
+  .project-card::after{
+    content:"Click to Preview";
+  }
+
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+  }
+  to{
+    opacity:1;
+  }
+}
+
+@keyframes zoomIn{
+  from{
+    opacity:0;
+    transform:scale(.9);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* ==========================================
+   MOBILE MODAL
+========================================== */
+
+@media(max-width:768px){
+
+  .modal-image{
+    max-width:100%;
+    max-height:85vh;
+    border-radius:14px;
+  }
+
+  .close-modal{
+    width:45px;
+    height:45px;
+    font-size:1.7rem;
+
+    top:15px;
+    right:15px;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .modal-image{
+    max-height:80vh;
+  }
+
+  .close-modal{
+    width:40px;
+    height:40px;
+    font-size:1.5rem;
+  }
+
+  .project-card::after{
+    font-size:.55rem;
+    padding:3px 6px;
+  }
+
+}
