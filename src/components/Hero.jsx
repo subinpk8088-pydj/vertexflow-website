@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import "../styles/hero.css";
 
@@ -14,6 +15,8 @@ const projectImages = {
 };
 
 function Hero() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   return (
     <section className="hero">
       <div className="grid-bg"></div>
@@ -90,7 +93,10 @@ function Hero() {
 
         <div className="hero-showcase">
           {/* ERP */}
-          <div className="project-card project1">
+          <div
+            className="project-card project1"
+            onClick={() => setSelectedImage(projectImages.erp)}
+          >
             <img
               src={projectImages.erp}
               alt="ERP Dashboard"
@@ -102,7 +108,10 @@ function Hero() {
           </div>
 
           {/* Business */}
-          <div className="project-card project2">
+          <div
+            className="project-card project2"
+            onClick={() => setSelectedImage(projectImages.business)}
+          >
             <img
               src={projectImages.business}
               alt="Business Website"
@@ -114,7 +123,10 @@ function Hero() {
           </div>
 
           {/* Portfolio */}
-          <div className="project-card project3">
+          <div
+            className="project-card project3"
+            onClick={() => setSelectedImage(projectImages.portfolio)}
+          >
             <img
               src={projectImages.portfolio}
               alt="Portfolio Website"
@@ -125,8 +137,11 @@ function Hero() {
             </div>
           </div>
 
-          {/* Ecommerce */}
-          <div className="project-card project4">
+          {/* E-Commerce */}
+          <div
+            className="project-card project4"
+            onClick={() => setSelectedImage(projectImages.ecommerce)}
+          >
             <img
               src={projectImages.ecommerce}
               alt="E-Commerce Platform"
@@ -143,6 +158,28 @@ function Hero() {
           </div>
         </div>
       </motion.div>
+
+      {/* IMAGE PREVIEW MODAL */}
+      {selectedImage && (
+        <div
+          className="image-modal"
+          onClick={() => setSelectedImage(null)}
+        >
+          <img
+            src={selectedImage}
+            alt="Project Preview"
+            className="modal-image"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          <button
+            className="close-modal"
+            onClick={() => setSelectedImage(null)}
+          >
+            ×
+          </button>
+        </div>
+      )}
     </section>
   );
 }
