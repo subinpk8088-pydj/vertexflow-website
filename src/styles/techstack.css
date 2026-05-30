@@ -1,0 +1,25 @@
+.tech-grid {
+  display: grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(180px,1fr));
+  gap: 25px;
+}
+
+.tech-card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  transition: .3s;
+  box-shadow: 0 10px 25px rgba(0,0,0,.05);
+}
+
+.tech-card:hover {
+  transform: translateY(-8px);
+}
+
+.tech-icon {
+  font-size: 3rem;
+  color: #2563eb;
+  margin-bottom: 15px;
+}

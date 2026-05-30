@@ -1,5 +1,7 @@
 import projects from "../data/projects";
 import ProjectCard from "./ProjectCard";
+import { motion } from "framer-motion";
+import "../styles/projects.css";
 
 function Projects() {
   return (

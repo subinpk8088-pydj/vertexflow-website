@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+import "../styles/services.css";
+
 function Services() {
   const services = [
     {
@@ -36,12 +39,27 @@ function Services() {
         </div>
 
         <div className="services-grid">
+
           {services.map((service, index) => (
-            <div className="service-card" key={index}>
+            <motion.div
+              key={index}
+              className="service-card"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1
+              }}
+              whileHover={{
+                scale: 1.05
+              }}
+            >
               <h3>{service.title}</h3>
               <p>{service.desc}</p>
-            </div>
+            </motion.div>
           ))}
+
         </div>
 
       </div>
