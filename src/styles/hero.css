@@ -6,22 +6,13 @@
   box-sizing:border-box;
 }
 
-body{
-  overflow-x:hidden;
-}
-
-/* =========================
-   HERO SECTION
-========================= */
-
 .hero{
   min-height:100vh;
   background:#0F172A;
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-columns:1fr 1fr;
   align-items:center;
-  gap:60px;
-  padding:120px 8% 80px;
+  padding:0 8%;
   overflow:hidden;
   position:relative;
 }
@@ -30,8 +21,8 @@ body{
   position:absolute;
   inset:0;
   background-image:
-    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
   background-size:50px 50px;
   mask-image:radial-gradient(circle, black 40%, transparent 90%);
 }
@@ -41,11 +32,7 @@ body{
   position:absolute;
   width:700px;
   height:700px;
-  background:radial-gradient(
-    circle,
-    rgba(37,99,235,.20),
-    transparent 70%
-  );
+  background:radial-gradient(circle, rgba(37,99,235,.20), transparent 70%);
   top:-250px;
   right:-200px;
 }
@@ -63,35 +50,18 @@ body{
   background:rgba(56,189,248,.08);
   color:#38BDF8;
   margin-bottom:25px;
-  font-size:.95rem;
 }
 
 .hero h1{
   font-family:'Syne',sans-serif;
-  font-size:clamp(2.8rem,6vw,5rem);
+  font-size:4.5rem;
   line-height:1.05;
   color:white;
 }
-.hero-showcase{
-  position:relative;
-  width:100%;
-  height:100%;
-}
 
-.hero-visual{
-  position:relative;
-  width:100%;
-  max-width:700px;
-  height:700px;
-  margin:auto;
-}
 .hero h1 span{
   display:block;
-  background:linear-gradient(
-    135deg,
-    #2563EB,
-    #38BDF8
-  );
+  background:linear-gradient(135deg, #2563EB, #38BDF8);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
@@ -108,7 +78,6 @@ body{
   display:flex;
   gap:15px;
   margin-top:35px;
-  flex-wrap:wrap;
 }
 
 .primary-btn{
@@ -116,19 +85,10 @@ body{
   cursor:pointer;
   padding:14px 30px;
   border-radius:14px;
-  background:linear-gradient(
-    135deg,
-    #2563EB,
-    #38BDF8
-  );
+  background:linear-gradient(135deg, #2563EB, #38BDF8);
   color:white;
   font-weight:600;
   box-shadow:0 10px 40px rgba(37,99,235,.45);
-  transition:.3s;
-}
-
-.primary-btn:hover{
-  transform:translateY(-3px);
 }
 
 .secondary-btn{
@@ -138,24 +98,18 @@ body{
   padding:14px 30px;
   border-radius:14px;
   cursor:pointer;
-  transition:.3s;
-}
-
-.secondary-btn:hover{
-  background:rgba(255,255,255,.05);
 }
 
 .trust-bar{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:20px;
   margin-top:60px;
+  gap:20px;
 }
 
 .trust-bar h3{
   color:white;
   margin-bottom:5px;
-  font-size:1rem;
 }
 
 .trust-bar span{
@@ -163,16 +117,9 @@ body{
   font-size:.85rem;
 }
 
-/* =========================
-   HERO VISUAL
-========================= */
-
 .hero-visual{
   position:relative;
-  width:100%;
-  max-width:700px;
   height:700px;
-  margin:auto;
 }
 
 .orb{
@@ -197,477 +144,98 @@ body{
   right:50px;
 }
 
-/* =========================
-   PROJECT CARDS
-========================= */
-
-.project-card{
-  position:absolute;
-  width:clamp(170px,22vw,280px);
-  height:clamp(120px,15vw,190px);
-
-  overflow:hidden;
-  border-radius:24px;
-  border:1px solid rgba(255,255,255,.08);
-
-  background:rgba(255,255,255,.04);
-  backdrop-filter:blur(20px);
-
-  box-shadow:0 20px 60px rgba(0,0,0,.35);
-  transition:.5s ease;
-}
-
-.project-card img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:top;
-  display:block;
-  filter:brightness(.9);
-  transition:transform .4s ease;
-}
-
-.project-card:hover img{
-  transform:scale(1.06);
-}
-
-.project-card:hover{
-  transform:translateY(-15px) scale(1.03);
-  border-color:rgba(56,189,248,.4);
-}
-
-.project-overlay{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  padding:16px;
-
-  background:linear-gradient(
-    to top,
-    rgba(15,23,42,.95) 0%,
-    rgba(15,23,42,.4) 60%,
-    transparent 100%
-  );
-}
-
-.project-overlay h4{
-  color:white;
-  margin-bottom:2px;
-  font-size:1rem;
-}
-
-.project-overlay span{
-  color:#94A3B8;
-  font-size:.78rem;
-}
-
-/* CARD POSITIONS */
-
-.project1{
-  top:20px;
-  left:10px;
-  animation:float1 6s ease-in-out infinite;
-}
-
-.project2{
-  top:70px;
-  right:0;
-  animation:float2 8s ease-in-out infinite;
-}
-
-.project3{
-  bottom:120px;
-  left:0;
-  animation:float3 7s ease-in-out infinite;
-}
-
-.project4{
-  bottom:40px;
-  right:20px;
-  animation:float4 9s ease-in-out infinite;
-}
-
-/* CENTER LOGO */
-
 .center-circle{
-  width:clamp(120px,18vw,240px);
-  height:clamp(120px,18vw,240px);
-
+  width:240px;
+  height:240px;
   position:absolute;
   left:50%;
   top:50%;
   transform:translate(-50%,-50%);
-
   border-radius:50%;
-
-  background:linear-gradient(
-    135deg,
-    rgba(37,99,235,.9),
-    rgba(56,189,248,.9)
-  );
-
+  background:linear-gradient(135deg, rgba(37,99,235,.9), rgba(56,189,248,.9));
   display:flex;
   align-items:center;
   justify-content:center;
-
   box-shadow:0 0 80px rgba(37,99,235,.45);
   z-index:5;
 }
 
 .center-circle span{
-  font-size:clamp(2rem,5vw,5rem);
+  font-size:5rem;
   font-weight:800;
   color:white;
   letter-spacing:4px;
 }
 
-/* =========================
-   FLOATING ANIMATION
-========================= */
-
-@keyframes float1{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-20px);}
+/* ── Hero floating cards — renamed to .hero-card to avoid conflict with ProjectCard ── */
+.hero-card {
+  position: absolute;
+  width: 280px;
+  height: 190px;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.04);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  transition: .5s ease;
 }
 
-@keyframes float2{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-30px);}
+.hero-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  filter: brightness(0.9);
+  transition: transform .4s ease;
 }
 
-@keyframes float3{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-15px);}
+.hero-card:hover img {
+  transform: scale(1.06);
 }
 
-@keyframes float4{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-25px);}
+.hero-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  border-color: rgba(56,189,248,.4);
 }
 
-/* =========================
-   TABLET
-========================= */
-
-@media (max-width:1024px){
-
-  .hero{
-    grid-template-columns:1fr;
-    text-align:center;
-    gap:80px;
-  }
-
-  .hero-content{
-    max-width:700px;
-    margin:auto;
-  }
-
-  .hero p{
-    margin:25px auto 0;
-  }
-
-  .hero-buttons{
-    justify-content:center;
-  }
-
-  .trust-bar{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .hero-visual{
-    height:550px;
-    max-width:650px;
-  }
+.hero-card-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(15,23,42,.95) 0%, rgba(15,23,42,.4) 60%, transparent 100%);
 }
 
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width:768px){
-
-  .hero{
-    padding:100px 20px 60px;
-  }
-
-  .hero-buttons{
-    flex-direction:column;
-    align-items:center;
-  }
-
-  .primary-btn,
-  .secondary-btn{
-    width:100%;
-    max-width:300px;
-  }
-
-  .trust-bar{
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-  }
-
-  .hero-visual{
-    height:420px;
-  }
-
-  .project-card{
-    width:150px;
-    height:100px;
-  }
-
-  .project-overlay{
-    padding:10px;
-  }
-
-  .project-overlay h4{
-    font-size:.8rem;
-  }
-
-  .project-overlay span{
-    font-size:.65rem;
-  }
-
-  .center-circle{
-    width:120px;
-    height:120px;
-  }
-
-  .center-circle span{
-    font-size:2rem;
-  }
+.hero-card-overlay h4 {
+  color: white;
+  margin: 0 0 2px;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-/* =========================
-   SMALL PHONES
-========================= */
-
-@media (max-width:480px){
-
-  .hero{
-    padding:90px 15px 50px;
-  }
-
-  .hero h1{
-    font-size:2.2rem;
-  }
-
-  .hero p{
-    font-size:.95rem;
-  }
-
-  .hero-visual{
-    height:320px;
-  }
-
-  .project-card{
-    width:120px;
-    height:80px;
-    border-radius:16px;
-  }
-
-  .project1{
-    top:0;
-    left:0;
-  }
-
-  .project2{
-    top:20px;
-    right:0;
-  }
-
-  .project3{
-    bottom:50px;
-    left:0;
-  }
-
-  .project4{
-    bottom:0;
-    right:0;
-  }
-
-  .center-circle{
-    width:90px;
-    height:90px;
-  }
-
-  .center-circle span{
-    font-size:1.4rem;
-  }
-}
-/* ==========================================
-   PROJECT CARD CLICKABLE
-========================================== */
-
-.project-card{
-  cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
+.hero-card-overlay span {
+  color: #94a3b8;
+  font-size: .78rem;
 }
 
-.project-card:active{
-  transform:scale(.97);
-}
+.project1{ top:20px; left:10px; animation:float1 6s ease-in-out infinite; }
+.project2{ top:70px; right:0; animation:float2 8s ease-in-out infinite; }
+.project3{ bottom:120px; left:0; animation:float3 7s ease-in-out infinite; }
+.project4{ bottom:40px; right:20px; animation:float4 9s ease-in-out infinite; }
 
-/* ==========================================
-   IMAGE PREVIEW MODAL
-========================================== */
+@keyframes float1{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-20px);} }
+@keyframes float2{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-30px);} }
+@keyframes float3{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-15px);} }
+@keyframes float4{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-25px);} }
 
-.image-modal{
-  position:fixed;
-  inset:0;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:20px;
-
-  background:rgba(0,0,0,.95);
-  backdrop-filter:blur(8px);
-
-  z-index:99999;
-
-  animation:fadeIn .25s ease;
-}
-
-.modal-image{
-  max-width:95%;
-  max-height:90vh;
-
-  object-fit:contain;
-
-  border-radius:18px;
-
-  box-shadow:
-    0 25px 80px rgba(0,0,0,.5);
-
-  animation:zoomIn .25s ease;
-}
-
-.close-modal{
-  position:absolute;
-  top:20px;
-  right:20px;
-
-  width:50px;
-  height:50px;
-
-  border:none;
-  border-radius:50%;
-
-  background:white;
-  color:#111827;
-
-  font-size:2rem;
-  line-height:1;
-
-  cursor:pointer;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  transition:.3s;
-}
-
-.close-modal:hover{
-  transform:rotate(90deg);
-}
-
-/* ==========================================
-   OPTIONAL PREVIEW LABEL
-========================================== */
-
-.project-card::after{
-  content:"Tap to Preview";
-
-  position:absolute;
-  top:10px;
-  right:10px;
-
-  padding:4px 8px;
-
-  border-radius:30px;
-
-  background:rgba(0,0,0,.65);
-  color:white;
-
-  font-size:.65rem;
-  font-weight:500;
-
-  z-index:2;
-}
-
-@media(min-width:769px){
-
-  .project-card::after{
-    content:"Click to Preview";
-  }
-
-}
-
-/* ==========================================
-   ANIMATIONS
-========================================== */
-
-@keyframes fadeIn{
-  from{
-    opacity:0;
-  }
-  to{
-    opacity:1;
-  }
-}
-
-@keyframes zoomIn{
-  from{
-    opacity:0;
-    transform:scale(.9);
-  }
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
-}
-
-/* ==========================================
-   MOBILE MODAL
-========================================== */
-
-@media(max-width:768px){
-
-  .modal-image{
-    max-width:100%;
-    max-height:85vh;
-    border-radius:14px;
-  }
-
-  .close-modal{
-    width:45px;
-    height:45px;
-    font-size:1.7rem;
-
-    top:15px;
-    right:15px;
-  }
-
-}
-
-@media(max-width:480px){
-
-  .modal-image{
-    max-height:80vh;
-  }
-
-  .close-modal{
-    width:40px;
-    height:40px;
-    font-size:1.5rem;
-  }
-
-  .project-card::after{
-    font-size:.55rem;
-    padding:3px 6px;
-  }
-
+@media(max-width:992px){
+  .hero{ grid-template-columns:1fr; text-align:center; padding-top:120px; }
+  .hero p{ margin:auto; margin-top:20px; }
+  .hero-buttons{ justify-content:center; }
+  .trust-bar{ grid-template-columns:repeat(2,1fr); }
+  .hero-visual{ margin-top:80px; height:600px; }
+  .hero h1{ font-size:3rem; }
 }
