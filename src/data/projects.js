@@ -12,7 +12,7 @@ const projects = [
 
   {
     id: 2,
-    title: "Blood Bank Donor Management Platform",
+    title: "Blood Bank Donor Management",
     image: "/projects/bloodbank.png",
     description:
       "Platform for donor registration, blood requests, appointments, and inventory management.",
