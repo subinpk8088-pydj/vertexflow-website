@@ -1,83 +1,105 @@
-import "../styles/whychooseus.css";
 import { motion } from "framer-motion";
+import "../styles/whychooseus.css";
 
-import {
-  FaLaptopCode,
-  FaRocket,
-  FaTools,
-  FaHeadset
-} from "react-icons/fa";
+const features = [
+  {
+    icon: (
+      <svg width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+        <rect x="2" y="3" width="20" height="14" rx="2"/>
+        <path d="M8 21h8M12 17v4"/>
+        <polyline points="16 8 12 12 8 8"/>
+      </svg>
+    ),
+    title: "Modern Technologies",
+    desc: "Built with React, Django, MySQL and modern development best practices for scalable results.",
+    accent: "#2563EB",
+    num: "01",
+  },
+  {
+    icon: (
+      <svg width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+    ),
+    title: "Fast Delivery",
+    desc: "Streamlined development process that launches your project on time without compromising quality.",
+    accent: "#38BDF8",
+    num: "02",
+  },
+  {
+    icon: (
+      <svg width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+      </svg>
+    ),
+    title: "Custom Development",
+    desc: "Every solution is uniquely tailored to your exact business requirements and goals.",
+    accent: "#7C3AED",
+    num: "03",
+  },
+  {
+    icon: (
+      <svg width="26" height="26" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+    ),
+    title: "Long-Term Support",
+    desc: "Ongoing maintenance, performance updates, and dedicated technical assistance after launch.",
+    accent: "#0891B2",
+    num: "04",
+  },
+];
 
 function WhyChooseUs() {
-  const features = [
-    {
-      icon: <FaLaptopCode />,
-      title: "Modern Technologies",
-      description:
-        "Scalable solutions built with React, Django, Node.js, MySQL and modern cloud architecture."
-    },
-    {
-      icon: <FaRocket />,
-      title: "Fast Delivery",
-      description:
-        "Streamlined development workflows help launch your project faster without sacrificing quality."
-    },
-    {
-      icon: <FaTools />,
-      title: "Custom Development",
-      description:
-        "Every website, ERP system and web application is designed around your unique business goals."
-    },
-    {
-      icon: <FaHeadset />,
-      title: "Dedicated Support",
-      description:
-        "Ongoing maintenance, updates and technical assistance after deployment."
-    }
-  ];
-
   return (
-    <section className="why-choose-us" id="why-us">
-      <div className="grid-bg"></div>
+    <section className="why-section">
 
-      <div className="container">
+      {/* Same grid bg as all sections */}
+      <div className="why-grid-bg" />
+
+      <div className="why-inner">
+
         <motion.div
           className="section-header"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
         >
           <span>Why VertexFlow</span>
-
           <h2>
-            Why Choose <span>Us</span>
+            Why Choose
+            <span> Us</span>
           </h2>
         </motion.div>
 
         <div className="why-grid">
-          {features.map((feature, index) => (
+          {features.map((f, i) => (
             <motion.div
+              key={i}
               className="why-card"
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
+              style={{ "--accent": f.accent }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.15
-              }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              whileHover={{ y: -10 }}
             >
-              <div className="why-icon">
-                {feature.icon}
-              </div>
+              {/* Corner number */}
+              <div className="why-num">{f.num}</div>
 
-              <h3>{feature.title}</h3>
+              {/* Icon */}
+              <div className="why-icon">{f.icon}</div>
 
-              <p>{feature.description}</p>
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+
+              {/* Bottom accent line */}
+              <div className="why-line" />
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
