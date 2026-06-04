@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import About from "../components/About";
-import Founders from "../components/Founders";
+// import Founders from "../components/Founders";
 import Services from "../components/Services";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Projects from "../components/Projects";
@@ -15,7 +15,9 @@ function Home() {
       <Navbar />
       <Hero />
       <About />
-      <Founders />
+
+      {/* <Founders /> */}
+
       <Services />
       <WhyChooseUs />
       <Projects />
