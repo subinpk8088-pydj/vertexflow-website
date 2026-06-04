@@ -1,4 +1,5 @@
 import { COMPANY } from "../constants/company";
+import { motion } from "framer-motion";
 import "../styles/footer.css";
 
 const GithubIcon = () => (
@@ -32,11 +33,18 @@ const navLinks = [
 ]
 
 const socials = [
-  { icon: <GithubIcon />,   href: COMPANY.github,               label: "GitHub",    accent: "#a78bfa" },
-  { icon: <LinkedinIcon />, href: COMPANY.linkedin,             label: "LinkedIn",  accent: "#38bdf8" },
-  { icon: <EnvelopeIcon />, href: `mailto:${COMPANY.email}`,   label: "Email",     accent: "#2563eb" },
-  { icon: <WhatsAppIcon />, href: `https://wa.me/${COMPANY.whatsapp}`, label: "WhatsApp", accent: "#22c55e" },
+  { icon: <GithubIcon />,   href: COMPANY.github,                       label: "GitHub",    accent: "#a78bfa" },
+  { icon: <LinkedinIcon />, href: COMPANY.linkedin,                     label: "LinkedIn",  accent: "#38bdf8" },
+  { icon: <EnvelopeIcon />, href: `mailto:${COMPANY.email}`,           label: "Email",     accent: "#2563eb" },
+  { icon: <WhatsAppIcon />, href: `https://wa.me/${COMPANY.whatsapp}`, label: "WhatsApp",  accent: "#22c55e" },
 ]
+
+const fadeUp = (delay = 0) => ({
+  initial:   { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport:  { once: true },
+  transition: { duration: 0.55, delay, ease: [0.4, 0, 0.2, 1] },
+})
 
 export default function Footer() {
   return (
@@ -45,85 +53,107 @@ export default function Footer() {
 
       <div className="footer-inner">
 
-        {/* Top */}
+        {/* Top grid */}
         <div className="footer-top">
 
           {/* Brand */}
-          <div className="footer-brand">
+          <motion.div className="footer-brand" {...fadeUp(0)}>
             <img src="/logo.png" alt={COMPANY.name} className="footer-logo" />
             <p className="footer-tagline">{COMPANY.tagline}</p>
             <p className="footer-founders">
               Founded by <strong>Subin PK</strong> &amp; <strong>Nihara Dhanesh</strong>
             </p>
             <div className="footer-socials">
-              {socials.map(s => (
-                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                  aria-label={s.label} className="social-btn"
-                  style={{ "--sc": s.accent }}>
+              {socials.map((s, i) => (
+                <motion.a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank" rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="social-btn"
+                  style={{ "--sc": s.accent }}
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + i * 0.08, type: "spring", stiffness: 260, damping: 20 }}
+                  whileHover={{ y: -4, scale: 1.12 }}
+                >
                   {s.icon}
-                </a>
+                </motion.a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Navigation */}
-          <div className="footer-col">
+          <motion.div className="footer-col" {...fadeUp(0.1)}>
             <h4 className="footer-col-title">Navigation</h4>
             <ul className="footer-list">
-              {navLinks.map(l => (
-                <li key={l.label}>
+              {navLinks.map((l, i) => (
+                <motion.li key={l.label}
+                  initial={{ opacity: 0, x: -12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.15 + i * 0.07 }}>
                   <a href={l.href} className="footer-link">
                     <svg width="11" height="11" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24">
                       <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                     {l.label}
                   </a>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact */}
-          <div className="footer-col">
+          <motion.div className="footer-col" {...fadeUp(0.2)}>
             <h4 className="footer-col-title">Contact</h4>
             <ul className="footer-list">
-              <li>
-                <a href={`mailto:${COMPANY.email}`} className="footer-link">
-                  <EnvelopeIcon /> {COMPANY.email}
-                </a>
-              </li>
-              <li>
-                <a href={`https://wa.me/${COMPANY.whatsapp}`} target="_blank" rel="noopener noreferrer" className="footer-link">
-                  <WhatsAppIcon /> {COMPANY.phone}
-                </a>
-              </li>
-              <li>
-                <a href={COMPANY.linkedin} target="_blank" rel="noopener noreferrer" className="footer-link">
-                  <LinkedinIcon /> LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href={COMPANY.github} target="_blank" rel="noopener noreferrer" className="footer-link">
-                  <GithubIcon /> GitHub
-                </a>
-              </li>
+              {[
+                { icon: <EnvelopeIcon />, href: `mailto:${COMPANY.email}`,           label: COMPANY.email },
+                { icon: <WhatsAppIcon />, href: `https://wa.me/${COMPANY.whatsapp}`, label: COMPANY.phone },
+                { icon: <LinkedinIcon />, href: COMPANY.linkedin,                    label: "LinkedIn"    },
+                { icon: <GithubIcon />,   href: COMPANY.github,                      label: "GitHub"      },
+              ].map((item, i) => (
+                <motion.li key={item.label}
+                  initial={{ opacity: 0, x: -12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + i * 0.07 }}>
+                  <a href={item.href} target="_blank" rel="noopener noreferrer" className="footer-link">
+                    {item.icon} {item.label}
+                  </a>
+                </motion.li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
         </div>
 
         {/* Divider */}
-        <div className="footer-divider" />
+        <motion.div
+          className="footer-divider"
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        />
 
         {/* Bottom */}
-        <div className="footer-bottom">
+        <motion.div
+          className="footer-bottom"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           <span className="footer-copy">
             © {new Date().getFullYear()} <strong>{COMPANY.name}</strong>. All Rights Reserved.
           </span>
           <span className="footer-made">
             Built with React &amp; Django &nbsp;✦&nbsp; Kerala, India
           </span>
-        </div>
+        </motion.div>
 
       </div>
     </footer>
